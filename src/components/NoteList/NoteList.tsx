@@ -10,14 +10,12 @@ export const NoteList: React.SFC = () => {
     await navigate(`/${noteId}/`)
   }, [])
 
-  const content = '# heading'
+  const content = 'This is a note\n==============\n\nSubtitle\n--------\n\n\nShopping list:\n\n1. apples\n2. oranges\n3. toilet paper'
 
   return (
     <Container>
       <EmptyCard/>
-      <NoteCard onClick={onCardClick(1)}>
-        {content}
-      </NoteCard>
+      <NoteCard onClick={onCardClick(1)} markdownContent={content}/>
     </Container>
   )
 }

@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { Container as NoteCardContainer } from './NoteCard.styled'
 
 export const Container = styled(NoteCardContainer)`
+  font-family: Roboto;
   background: #B90445;
   display: flex;
   align-items: center;

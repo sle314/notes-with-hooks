@@ -4,11 +4,12 @@ import Markdown from '../Markdown'
 import { Container } from './NoteCard.styled'
 
 interface Props {
+  markdownContent?: string
   onClick: (event: MouseEvent) => void
 }
 
-export const NoteCard: React.SFC<Props> = ({ onClick, children }) => (
+export const NoteCard: React.SFC<Props> = ({ onClick, markdownContent = '' }) => (
   <Container onClick={onClick}>
-    <Markdown isSmall>{children}</Markdown>
+    <Markdown isSmall>{markdownContent}</Markdown>
   </Container>
 )

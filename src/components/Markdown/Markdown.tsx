@@ -1,14 +1,14 @@
 import React from 'react'
-import ReactMarkdown from 'react-markdown'
+import ReactMarkdown, { ReactMarkdownProps } from 'react-markdown'
 
 import { Container } from './Markdown.styled'
 
-interface Props {
+interface Props extends ReactMarkdownProps {
   isSmall?: boolean
 }
 
-export const Markdown: React.SFC<Props> = ({ children, isSmall = false }) => (
+export const Markdown: React.SFC<Props> = ({ children, isSmall = false, ...rest }) => (
   <Container isSmall={isSmall}>
-    <ReactMarkdown>{children}</ReactMarkdown>
+    <ReactMarkdown {...rest}>{children}</ReactMarkdown>
   </Container>
 )
