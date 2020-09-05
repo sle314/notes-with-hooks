@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { MouseEvent } from 'react'
 
-import { Box } from './NoteCard.styled'
+import Markdown from '../Markdown'
+import { Container } from './NoteCard.styled'
 
-export const NoteCard: React.SFC = () => (
-  <Box>
-    Test
-  </Box>
+interface Props {
+  onClick: (event: MouseEvent) => void
+}
+
+export const NoteCard: React.SFC<Props> = ({ onClick, children }) => (
+  <Container onClick={onClick}>
+    <Markdown isSmall>{children}</Markdown>
+  </Container>
 )
