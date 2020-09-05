@@ -1,0 +1,7 @@
+node_modules
+.cache
+.circleci
+public
+static
+**/*.js
+serviceWorker.ts
