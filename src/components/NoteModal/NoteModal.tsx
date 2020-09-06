@@ -1,11 +1,10 @@
-import React, { useCallback, useMemo, useEffect, useRef } from 'react'
+import React from 'react'
 
-import Modal from '../Modal'
-import { navigate } from '@reach/router'
-
-import { DEFAULT_NOTE_SOURCE } from '../../constants'
 import { Path } from '../../enums'
 import { Back, Delete, Edit, Save } from '../icons'
+import Markdown from '../Markdown'
+import Modal from '../Modal'
+import { useNoteModal } from './use-note-modal'
 
 import {
   ActionContainer,
@@ -17,7 +16,6 @@ import {
   IconLink,
   Textarea,
 } from './NoteModal.styled'
-import Markdown from '../Markdown'
 
 interface Props {
   noteId?: number
@@ -25,36 +23,21 @@ interface Props {
 }
 
 export const NoteModal: React.SFC<Props> = ({ noteId, isEdit = false }) => {
-  const onOverlayClick = useCallback(async () => {
-    await navigate(Path.Notes)
-  }, [])
-
-  const onDeleteClick = useCallback(async () => {
-    console.log(noteId)
-    await navigate(Path.Notes)
-  }, [noteId])
-
-  const onSaveClick = useCallback(async () => {
-    if (!noteId) {
-      return
-    }
-    console.log(noteId)
-    await navigate(`${Path.Notes}${noteId}/`)
-  }, [noteId])
-
-  const isShown = useMemo(() => Boolean(noteId), [noteId])
-
-  const modalRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    if (isShown && modalRef.current) {
-      modalRef.current.focus()
-    }
-  }, [isShown])
+  const {
+    isShown,
+    modalRef,
+    note,
+    onDeleteClick,
+    onOverlayClick,
+    onSaveClick,
+    onTextareaChange,
+    source,
+    textareaRef,
+  } = useNoteModal(isEdit, noteId)
 
   return (
     <Modal key={noteId} onOverlayClick={onOverlayClick} isShown={isShown} ref={modalRef}>
-      {noteId && (
+      {note && (
         <Container>
           <Buttons>
             <BackContainer>
@@ -79,8 +62,8 @@ export const NoteModal: React.SFC<Props> = ({ noteId, isEdit = false }) => {
             </ActionContainer>
           </Buttons>
           <Content>
-            {!isEdit && <Markdown>{`${DEFAULT_NOTE_SOURCE}\n${DEFAULT_NOTE_SOURCE}\n${DEFAULT_NOTE_SOURCE}`}</Markdown>}
-            {isEdit && <Textarea defaultValue={DEFAULT_NOTE_SOURCE}/>}
+            {!isEdit && <Markdown>{source}</Markdown>}
+            {isEdit && <Textarea ref={textareaRef} value={source} onChange={onTextareaChange}/>}
           </Content>
         </Container>
       )}

@@ -6,14 +6,14 @@ import NoteModal from '../../components/NoteModal'
 import Page from '../../layout-components/Page'
 
 interface Props {
-  noteId?: number
+  noteId?: string
   isEdit?: boolean
 }
 
 export const Notes: React.SFC<RouteComponentProps<Props>> = ({ noteId, isEdit = false }) => (
   <Page>
     <NoteList/>
-    <NoteModal isEdit={isEdit} noteId={noteId}/>
+    <NoteModal isEdit={isEdit} noteId={noteId ? parseInt(noteId, 10) : undefined}/>
   </Page>
 )
 

@@ -1,3 +1,4 @@
+import React from 'react'
 import { Link } from '@reach/router'
 import styled, { css } from 'styled-components'
 
@@ -26,7 +27,7 @@ const iconStyle = css<{ isLast?: boolean }>`
     color: ${({ theme }) => theme.palette.common.crimson};
   }
 `
-export const IconLink = styled(Link)`
+export const IconLink = styled(({ isLast: boolean, ...rest }) => <Link {...rest}/>)`
   ${iconStyle};
 `
 
