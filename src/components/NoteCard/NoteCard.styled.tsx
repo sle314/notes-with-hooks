@@ -1,20 +1,19 @@
 import styled from 'styled-components'
 
 export const Container = styled.article`
-  box-sizing: border-box;
   width: 100%;
   height: 100%;
   padding: 1.25rem;
   color: black;
-  background: #FDFDFD;
+  background: ${({ theme }) => theme.palette.common.lightGrey};
   border: 3px solid transparent;
-  border-radius: 0.625rem;
-  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.15);
+  border-radius: ${({ theme }) => theme.borderRadius};
+  box-shadow: ${({ theme }) => theme.boxShadow.normal};
   transition: border-color 0.5s ease-in-out;
   font-size: 4rem;
+  box-sizing: border-box;
 
   :hover {
-    cursor: pointer;
-    border: 3px solid #B90445;
+    border: 3px solid ${({ theme }) => theme.palette.common.crimson};
   }
 `

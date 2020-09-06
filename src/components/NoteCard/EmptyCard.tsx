@@ -4,6 +4,6 @@ import { Container } from './EmptyCard.styled'
 
 export const EmptyCard: React.SFC = () => {
   return (
-    <Container>+</Container>
+    <Container tabIndex={0}>+</Container>
   )
 }
