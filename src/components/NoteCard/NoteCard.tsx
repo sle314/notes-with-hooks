@@ -4,11 +4,11 @@ import Markdown from '../Markdown'
 import { Container } from './NoteCard.styled'
 
 interface Props {
-  markdownContent?: string
+  markdownSource?: string
 }
 
-export const NoteCard: React.SFC<Props> = ({ markdownContent = '' }) => (
+export const NoteCard: React.SFC<Props> = ({ markdownSource = '' }) => (
   <Container>
-    <Markdown isSmall>{markdownContent}</Markdown>
+    <Markdown isSmall>{markdownSource}</Markdown>
   </Container>
 )

@@ -3,7 +3,7 @@ import React, { useCallback, useMemo, useEffect, useRef } from 'react'
 import Modal from '../Modal'
 import { navigate } from '@reach/router'
 
-import { DEFAULT_CONTENT } from '../../constants'
+import { DEFAULT_NOTE_SOURCE } from '../../constants'
 import { Path } from '../../enums'
 import { Back, Delete, Edit, Save } from '../icons'
 
@@ -79,8 +79,8 @@ export const NoteModal: React.SFC<Props> = ({ noteId, isEdit = false }) => {
             </ActionContainer>
           </Buttons>
           <Content>
-            {!isEdit && <Markdown>{`${DEFAULT_CONTENT}\n${DEFAULT_CONTENT}\n${DEFAULT_CONTENT}`}</Markdown>}
-            {isEdit && <Textarea defaultValue={DEFAULT_CONTENT}/>}
+            {!isEdit && <Markdown>{`${DEFAULT_NOTE_SOURCE}\n${DEFAULT_NOTE_SOURCE}\n${DEFAULT_NOTE_SOURCE}`}</Markdown>}
+            {isEdit && <Textarea defaultValue={DEFAULT_NOTE_SOURCE}/>}
           </Content>
         </Container>
       )}
