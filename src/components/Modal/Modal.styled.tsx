@@ -1,12 +1,17 @@
 import styled from 'styled-components'
 
 export const Wrapper = styled.div<{ isShown: boolean }>`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   display: ${({ isShown }) => isShown ? 'block' : 'none'};
 `
 
 export const Container = styled.div`
-  height: calc(100vh - 3.75rem);
-  position: fixed;
+  height: calc(100% - 3.75rem);
+  position: absolute;
   top: 1.875rem;
   left: 50%;
   transform: translateX(-50%);
@@ -25,10 +30,10 @@ export const Container = styled.div`
 `
 
 export const Overlay = styled.div`
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background: ${({ theme }) => theme.palette.overlay};
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   z-index: 1;

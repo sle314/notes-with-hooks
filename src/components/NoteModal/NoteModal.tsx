@@ -36,7 +36,7 @@ export const NoteModal: React.SFC<Props> = ({ noteId, isEdit = false }) => {
   } = useNoteModal(isEdit, noteId)
 
   return (
-    <Modal key={noteId} onOverlayClick={onOverlayClick} isShown={isShown} ref={modalRef}>
+    <Modal onOverlayClick={onOverlayClick} isShown={isShown} ref={modalRef}>
       {note && (
         <Container>
           <Buttons>
@@ -47,7 +47,7 @@ export const NoteModal: React.SFC<Props> = ({ noteId, isEdit = false }) => {
             </BackContainer>
             <ActionContainer>
               {!isEdit && (
-                <IconLink to={`${Path.Notes}${noteId}/edit`}>
+                <IconLink to={`${Path.Notes}${noteId}/edit/`}>
                   <Edit/>
                 </IconLink>
               )}
