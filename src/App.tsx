@@ -2,6 +2,7 @@ import React from 'react'
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
 import { Reset } from 'styled-reset'
 
+import { AppProvider } from './context'
 import Router from './Router'
 import theme from './theme'
 
@@ -16,7 +17,9 @@ const App: React.SFC = () => {
     <ThemeProvider theme={theme}>
       <Reset/>
       <GlobalStyle/>
-      <Router/>
+      <AppProvider>
+        <Router/>
+      </AppProvider>
     </ThemeProvider>
   )
 }
