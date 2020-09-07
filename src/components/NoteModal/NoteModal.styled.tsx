@@ -52,4 +52,5 @@ export const Textarea = styled.textarea`
   flex: 1;
   border: none;
   padding: 1rem;
+  font-family: ${({ theme }) => theme.typography.font.code};
 `
