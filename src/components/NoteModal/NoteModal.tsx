@@ -35,38 +35,36 @@ export const NoteModal: React.FC<Props> = ({ noteId, isEdit = false }) => {
     textareaRef,
   } = useNoteModal(isEdit, noteId)
 
-  return (
+  return note ? (
     <Modal onOverlayClick={onOverlayClick} isShown={isShown} ref={modalRef}>
-      {note && (
-        <Container>
-          <Buttons>
-            <BackContainer>
-              <IconLink to={Path.Notes} isLast>
-                <Back/>
+      <Container>
+        <Buttons>
+          <BackContainer>
+            <IconLink to={Path.Notes} isLast>
+              <Back/>
+            </IconLink>
+          </BackContainer>
+          <ActionContainer>
+            {!isEdit && (
+              <IconLink to={`${Path.Notes}${note.id}/edit/`}>
+                <Edit/>
               </IconLink>
-            </BackContainer>
-            <ActionContainer>
-              {!isEdit && (
-                <IconLink to={`${Path.Notes}${note.id}/edit/`}>
-                  <Edit/>
-                </IconLink>
-              )}
-              {isEdit && (
-                <IconButton onClick={onSaveClick}>
-                  <Save/>
-                </IconButton>
-              )}
-              <IconButton onClick={onDeleteClick} isLast>
-                <Delete/>
+            )}
+            {isEdit && (
+              <IconButton onClick={onSaveClick}>
+                <Save/>
               </IconButton>
-            </ActionContainer>
-          </Buttons>
-          <Content>
-            {!isEdit && <Markdown>{source}</Markdown>}
-            {isEdit && <Textarea ref={textareaRef} value={source} onChange={onTextareaChange}/>}
-          </Content>
-        </Container>
-      )}
+            )}
+            <IconButton onClick={onDeleteClick} isLast>
+              <Delete/>
+            </IconButton>
+          </ActionContainer>
+        </Buttons>
+        <Content>
+          {!isEdit && <Markdown>{source}</Markdown>}
+          {isEdit && <Textarea ref={textareaRef} value={source} onChange={onTextareaChange}/>}
+        </Content>
+      </Container>
     </Modal>
-  )
+  ) : null
 }
