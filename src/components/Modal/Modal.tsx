@@ -9,7 +9,7 @@ interface Props {
   isShown: boolean
 }
 
-export const Modal = forwardRef<HTMLDivElement,  PropsWithChildren<Props>>(({
+export const Modal = forwardRef<HTMLDivElement, PropsWithChildren<Props>>(({
   children,
   onOverlayClick: onOverlayClickProp,
   isShown = false,
@@ -22,7 +22,7 @@ export const Modal = forwardRef<HTMLDivElement,  PropsWithChildren<Props>>(({
 
   const onKeyDown = useCallback((event: KeyboardEvent) => {
     if (isShown && event.key.toLowerCase() === 'escape') {
-      void navigate(Path.Notes)
+      navigate(Path.Notes).catch(() => undefined)
     }
   }, [isShown])
 

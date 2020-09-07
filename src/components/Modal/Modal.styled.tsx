@@ -4,8 +4,8 @@ export const Wrapper = styled.div<{ isShown: boolean }>`
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   display: ${({ isShown }) => isShown ? 'block' : 'none'};
 `
 
@@ -20,7 +20,7 @@ export const Container = styled.div`
   box-sizing: border-box;
   padding: 3.75rem;
   max-width: 50rem;
-  min-width: 25rem;
+  width: 80%;
   overflow-x: hidden;
   overflow-y: auto;
 

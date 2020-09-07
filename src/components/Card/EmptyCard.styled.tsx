@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
-import { Container as NoteCardContainer } from './NoteCard.styled'
+import { Container as CardContainer } from './Card.styled'
 
-export const Container = styled(NoteCardContainer)`
+export const Container = styled(CardContainer)`
   font-family: ${({ theme }) => theme.typography.font.secondary};
   background: ${({ theme }) => theme.palette.common.crimson};
   display: flex;

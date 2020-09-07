@@ -22,7 +22,7 @@ interface Props {
   isEdit?: boolean
 }
 
-export const NoteModal: React.SFC<Props> = ({ noteId, isEdit = false }) => {
+export const NoteModal: React.FC<Props> = ({ noteId, isEdit = false }) => {
   const {
     isShown,
     modalRef,
@@ -47,7 +47,7 @@ export const NoteModal: React.SFC<Props> = ({ noteId, isEdit = false }) => {
             </BackContainer>
             <ActionContainer>
               {!isEdit && (
-                <IconLink to={`${Path.Notes}${noteId}/edit/`}>
+                <IconLink to={`${Path.Notes}${note.id}/edit/`}>
                   <Edit/>
                 </IconLink>
               )}

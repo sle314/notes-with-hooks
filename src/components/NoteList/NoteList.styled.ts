@@ -1,17 +1,12 @@
 import styled from 'styled-components'
 
-import BareLink from '../BareLink'
-
-const size = '12.5rem'
+import { NOTE_CARD_SIZE } from '../../constants'
 
 export const Container = styled.section`
   display: grid;
   grid-gap: 3.75rem;
-  grid-template-columns: repeat(auto-fill, ${size});
-  grid-template-rows: repeat(auto-fill, minmax(${size}, auto));
+  grid-template-columns: repeat(auto-fill, ${NOTE_CARD_SIZE});
+  grid-template-rows: repeat(auto-fill, minmax(${NOTE_CARD_SIZE}, auto));
   padding: 6.25rem;
-`
-
-export const NoteCardWrapper = styled(BareLink)`
-  height: ${size};
+  justify-content: center;
 `

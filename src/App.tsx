@@ -12,7 +12,7 @@ const GlobalStyle = createGlobalStyle`
   }
 `
 
-const App: React.SFC = () => {
+const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <Reset/>

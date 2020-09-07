@@ -4,3 +4,5 @@ export const DEFAULT_NOTE_SOURCE = (
 )
 
 export const NOTES_STORAGE_KEY = 'notes'
+
+export const NOTE_CARD_SIZE = '12.5rem'

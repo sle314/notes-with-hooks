@@ -7,7 +7,7 @@ interface Props extends ReactMarkdownProps {
   isSmall?: boolean
 }
 
-export const Markdown: React.SFC<Props> = ({ children, isSmall = false, ...rest }) => (
+export const Markdown: React.FC<Props> = ({ children, isSmall = false, ...rest }) => (
   <Container isSmall={isSmall}>
     <ReactMarkdown {...rest}>{children}</ReactMarkdown>
   </Container>

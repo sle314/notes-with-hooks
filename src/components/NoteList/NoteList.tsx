@@ -1,14 +1,17 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useMemo } from 'react'
 import { navigate } from '@reach/router'
 
 import { useNotes } from '../../context'
 import { Path } from '../../enums'
-import NoteCard, { EmptyCard } from '../NoteCard'
+import { EmptyCard } from '../Card'
+import NoteCard from '../NoteCard'
 
-import { Container, NoteCardWrapper } from './NoteList.styled'
+import { Container } from './NoteList.styled'
 
-export const NoteList: React.SFC = () => {
-  const { notes, addInitial } = useNotes()
+export const NoteList: React.FC = () => {
+  const { getAllIds, addInitial } = useNotes()
+
+  const noteIds = useMemo(() => getAllIds(), [getAllIds])
 
   const onEmptyCardClick = useCallback(async () => {
     const { id } = addInitial()
@@ -18,11 +21,7 @@ export const NoteList: React.SFC = () => {
   return (
     <Container>
       <EmptyCard onClick={onEmptyCardClick}/>
-      {notes.map(({ id, source }) => (
-        <NoteCardWrapper key={`note-${id}`} to={`${Path.Notes}${id}/`}>
-          <NoteCard markdownSource={source}/>
-        </NoteCardWrapper>
-      ))}
+      {noteIds.map(noteId => <NoteCard key={`note-${noteId}`} noteId={noteId}/>)}
     </Container>
   )
 }

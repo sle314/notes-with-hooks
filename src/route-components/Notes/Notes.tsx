@@ -12,7 +12,10 @@ interface Props {
   isEdit?: boolean
 }
 
-export const Notes: React.SFC<RouteComponentProps<Props>> = ({ noteId: noteIdProp, isEdit = false }) => {
+export const Notes: React.FC<RouteComponentProps<Props>> = ({
+  noteId: noteIdProp,
+  isEdit = false,
+}) => {
   const noteId = useMemo<number | undefined>(() => (
     noteIdProp ? parseInt(noteIdProp, 10) : undefined
   ), [noteIdProp])
@@ -21,7 +24,7 @@ export const Notes: React.SFC<RouteComponentProps<Props>> = ({ noteId: noteIdPro
   // redirect to list if note does not exist
   useEffect(() => {
     if (noteId && !get(noteId)) {
-      void navigate(Path.Notes)
+      navigate(Path.Notes).catch(() => undefined)
     }
   }, [get, noteId])
 

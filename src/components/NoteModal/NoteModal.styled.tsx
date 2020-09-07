@@ -8,7 +8,7 @@ export const Container = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  min-width: 37.5rem;
+  min-width: 100%;
 `
 
 export const Buttons = styled.div`
@@ -27,7 +27,8 @@ const iconStyle = css<{ isLast?: boolean }>`
     color: ${({ theme }) => theme.palette.common.crimson};
   }
 `
-export const IconLink = styled(({ isLast: boolean, ...rest }) => <Link {...rest}/>)`
+/*  eslint-disable-next-line */
+export const IconLink = styled(({ isLast, ...rest }) => <Link {...rest}/>)`
   ${iconStyle};
 `
 

@@ -1,6 +1,6 @@
 import React, { createContext, useMemo, useState, useCallback, useEffect, useRef } from 'react'
 
-import { DEFAULT_NOTE_SOURCE  } from '../../constants'
+import { DEFAULT_NOTE_SOURCE } from '../../constants'
 import { Note } from '../../interfaces/note'
 import { getNotes, storeNotes } from '../../utils'
 
@@ -11,7 +11,6 @@ export interface ContextData {
   add: (source: string) => Note
   addInitial: () => Note
   remove: (id: number) => boolean
-  notes: Note[]
 }
 
 const EMPTY_NOTE = { id: 0, source: '' }
@@ -23,7 +22,6 @@ export const Context = createContext<ContextData>({
   add: () => EMPTY_NOTE,
   addInitial: () => EMPTY_NOTE,
   remove: () => false,
-  notes: [],
 })
 
 export const NoteProvider: React.FC = ({ children }) => {
@@ -96,8 +94,6 @@ export const NoteProvider: React.FC = ({ children }) => {
     add,
     addInitial,
     remove,
-    notes,
-    setNotes,
   }), [
     getAllIds,
     get,
@@ -105,8 +101,6 @@ export const NoteProvider: React.FC = ({ children }) => {
     add,
     addInitial,
     remove,
-    notes,
-    setNotes,
   ])
 
   return (

@@ -44,9 +44,6 @@ module.exports = {
       when: 'never',
     }],
     'react/jsx-equals-spacing': ['error', 'never'],
-    'no-void': ['error', {
-      allowAsStatement: true,
-    }]
   },
   settings: {
     react: {

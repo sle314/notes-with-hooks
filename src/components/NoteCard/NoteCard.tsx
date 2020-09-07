@@ -1,14 +1,26 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 
+import { useNotes } from '../../context'
+import { Path } from '../../enums'
+import Card from '../Card'
 import Markdown from '../Markdown'
-import { Container } from './NoteCard.styled'
+
+import { Link } from './NoteCard.styled'
 
 interface Props {
-  markdownSource?: string
+  noteId: number
 }
 
-export const NoteCard: React.SFC<Props> = ({ markdownSource = '' }) => (
-  <Container>
-    <Markdown isSmall>{markdownSource}</Markdown>
-  </Container>
-)
+export const NoteCard: React.FC<Props> = ({ noteId }) => {
+  const { get } = useNotes()
+
+  const note = useMemo(() => get(noteId), [get, noteId])
+
+  return note ? (
+    <Link to={`${Path.Notes}${noteId}/`}>
+      <Card>
+        <Markdown isSmall>{note.source}</Markdown>
+      </Card>
+    </Link>
+  ) : null
+}
