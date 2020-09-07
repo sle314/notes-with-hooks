@@ -21,8 +21,7 @@ export const Container = styled.div`
   padding: 3.75rem;
   max-width: 50rem;
   width: 80%;
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: auto;
 
   :focus {
     outline: none;

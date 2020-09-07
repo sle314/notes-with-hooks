@@ -1,5 +1,5 @@
-import React, { useCallback, useEffect, forwardRef, PropsWithChildren, useRef } from 'react'
-import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
+import React, { useCallback, useEffect, forwardRef, PropsWithChildren } from 'react'
+import ScrollLock from 'react-scrolllock'
 import { navigate } from '@reach/router'
 
 import { Path } from '../../enums'
@@ -33,23 +33,13 @@ export const Modal = forwardRef<HTMLDivElement, PropsWithChildren<Props>>(({
     return () => window.removeEventListener('keydown', onKeyDown)
   }, [onKeyDown])
 
-  const modalRef = useRef<HTMLDivElement>(null)
-  useEffect(() => {
-    if (!modalRef.current) {
-      return
-    }
-    const currentRef = modalRef.current
-    disableBodyScroll(currentRef)
-
-    return () => {
-      enableBodyScroll(currentRef)
-    }
-  }, [])
-
   return (
-    <Wrapper isShown={isShown} ref={modalRef}>
+    <Wrapper isShown={isShown}>
       <Overlay onClick={onOverlayClick}/>
-      <Container role='dialog' tabIndex={0} ref={ref}>{children}</Container>
+      {/* lock body scroll. any touch scroll elements need to we wrapped with `TouchScrollable` */}
+      <ScrollLock isActive={isShown}>
+        <Container role='dialog' tabIndex={0} ref={ref}>{children}</Container>
+      </ScrollLock>
     </Wrapper>
   )
 })

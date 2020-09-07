@@ -12,6 +12,7 @@ export const Container = styled.article`
   transition: border-color 0.5s ease-in-out;
   font-size: 4rem;
   box-sizing: border-box;
+  overflow: hidden;
 
   :hover {
     border: 3px solid ${({ theme }) => theme.palette.common.crimson};

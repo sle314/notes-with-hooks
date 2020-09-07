@@ -1,4 +1,5 @@
 import React from 'react'
+import { TouchScrollable } from 'react-scrolllock'
 
 import { Path } from '../../enums'
 import { Back, Delete, Edit, Save } from '../icons'
@@ -61,8 +62,16 @@ export const NoteModal: React.FC<Props> = ({ noteId, isEdit = false }) => {
           </ActionContainer>
         </Buttons>
         <Content>
-          {!isEdit && <Markdown>{source}</Markdown>}
-          {isEdit && <Textarea ref={textareaRef} value={source} onChange={onTextareaChange}/>}
+          {!isEdit && (
+            <TouchScrollable>
+              <Markdown>{source}</Markdown>
+            </TouchScrollable>
+          )}
+          {isEdit && (
+            <TouchScrollable>
+              <Textarea ref={textareaRef} value={source} onChange={onTextareaChange}/>
+            </TouchScrollable>
+          )}
         </Content>
       </Container>
     </Modal>
